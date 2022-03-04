@@ -1,2 +1,2 @@
 #!/bin/bash
-chmod u=rw,g=rx,o=wx hello
+chmod 653 hello
