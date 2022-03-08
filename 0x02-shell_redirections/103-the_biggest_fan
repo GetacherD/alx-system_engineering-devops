@@ -1,2 +1,2 @@
 #!/bin/bash
-sort -n -k3|cut -f1|tail -n 11
+cut -f1,3|sort -n -k2|tail -n 11
