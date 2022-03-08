@@ -1,2 +1,2 @@
 #!/bin/bash
-sort -k 3n|tail -n 11|cut -f 1
+sort -k 3nr|head -n 11|cut -f1
