@@ -1,0 +1,9 @@
+total 37
+drwxr-xr-x 1 hp 197121   0 Mar  8 11:43 .
+drwxr-xr-x 1 hp 197121   0 Mar  3 13:00 ..
+drwxr-xr-x 1 hp 197121   0 Mar  8 14:59 .git
+drwxr-xr-x 1 hp 197121   0 Mar  4 15:01 0x00-shell_basics
+drwxr-xr-x 1 hp 197121   0 Mar  4 14:13 0x01-shell_permissions
+drwxr-xr-x 1 hp 197121   0 Mar  8 15:00 0x02-shell_redirections
+-rw-r--r-- 1 hp 197121  19 Mar  3 13:05 README.md
+-rw-r--r-- 1 hp 197121 752 Mar  4 14:56 school.mgc
