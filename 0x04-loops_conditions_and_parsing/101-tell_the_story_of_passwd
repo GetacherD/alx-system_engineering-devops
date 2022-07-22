@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+#user story
+
+while IFS=: read -r un PASS UID_ GID INFO HOMED SHELL_
+do
+	echo "The user $un is part of the $GID gang, lives in $HOMED and rides $SHELL_. $UID_'s place is protected by the passcode $PASS, more info about the user here: $INFO"
+done</etc/passwd
