@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# demonstrate use of while loop
+i=1
+until [ "$i" -gt 10 ]
+do
+	echo "Best School"
+	i=$((i+1))
+done
