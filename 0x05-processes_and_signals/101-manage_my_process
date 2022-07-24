@@ -5,18 +5,22 @@ then
 	./manage_my_process &
 	echo "$$">/var/run/my_process.pid
 	echo "manage_my_process started"
+	exit
 elif [ "$1" == "stop" ]
 then
-	pkill -9 -f manage_my_process
+	kill "$(pgrep -f /manage_my_process)"
 	rm /var/run/my_process.pid
 	echo "manage_my_process stopped"
+	exit
 elif [ "$1" == "restart" ]
 then 
-	pkill -9 -f manage_my_process
+	kill "$(pgrep -f /manage_my_process)"
 	rm /var/run/my_process.pid
-	./manage_my_process
+	./manage_my_process &
 	echo "$$" > /var/run/my_process.pid
 	echo "manage_my_process restarted"
+	exit
 else
 	echo "Usage: manage_my_process {start|stop|restart}"
+	exit
 fi
