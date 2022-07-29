@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
-#print active ip
+#print all active ipv4 address on machine
 ifconfig |grep -Eow 'inet [0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}'|cut -d ' ' -f 2
