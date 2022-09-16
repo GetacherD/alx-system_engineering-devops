@@ -1,3 +1,5 @@
+# create file
+
 file {'school':
   ensure  => 'present',
   content => 'I love Puppet',
