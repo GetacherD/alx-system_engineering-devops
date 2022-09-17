@@ -7,5 +7,6 @@ Host *\n
     GSSAPIAuthentication yes\n'
 file {'/etc/ssh/ssh_config':
     ensure  => 'present',
-    content => $str
+    content => $str,
+    mode    => '0744'
 }
