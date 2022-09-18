@@ -1,3 +1,4 @@
+include stdlib
 file_line {'replace_pwd_auth':
   match   => '*PasswordAuthentication*',
   path    => '/etc/ssh/ssh_config',
