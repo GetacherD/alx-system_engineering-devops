@@ -1,11 +1,13 @@
-package {'sed':
-ensure => 'installed'
+file_line {'replace_pwd_auth':
+  match   => '*PasswordAuthentication*',
+  path    => '/etc/ssh/ssh_config',
+  line    => '    PasswordAuthentication no',
+  replace => true
 }
-exec {'update pass':
-  command => "usr/bin/sed 's/#   PasswordAuthentication yes/   PasswordAuthentication no/' /etc/ssh/ssh_config",
-  require => Package['sed']
-}
-exec {'update key':
-command => 'usr/bin/sed 's/#   IdentityFile ~/.ssh/id_rsa/   IdentityFile ~/.ssh/school/' /etc/ssh/ssh_config",
-require => Package['sed']
+
+file_line {'replace_identity':
+  match   => '*IdentityFile ~/.ssh/id_rsa*',
+  path    => '/etc/ssh/ssh_config',
+  line    => '    IdentityFile ~/.ssh/school',
+  replace => true
 }
