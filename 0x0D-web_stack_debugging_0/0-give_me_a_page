@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
 # start apache2 service
+service apache2 status
 system apache2 start
