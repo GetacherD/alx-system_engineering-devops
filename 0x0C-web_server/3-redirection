@@ -12,11 +12,10 @@ server {
 	listen   [::]:80 default_server;
 	root     /var/www/html;
 	index    index.html index.htm;
-}
-server {
-	listen   80;
-	server_name gtexk.tech/redirect_me www.gtexk.com/redirect_me;
-	return 301 https://www.youtube.com/;
+	location /redirect_me {
+		return 301 https://www.youtube.com/
+	}
+		
 }
 END
 service nginx restart
