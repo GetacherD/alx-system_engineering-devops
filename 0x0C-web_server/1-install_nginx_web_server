@@ -5,7 +5,7 @@ apt-get install -y nginx
 mkdir /var/www/nginx/html
 echo "Hello World" >/var/www/nginx/html/index.html
 cat <<EOT >> /etc/nginx/site-available/default
-"server {
+server {
 	listen 80 default_server;
 	listen [::]:80 default_server;
 	root /var/www/html;
