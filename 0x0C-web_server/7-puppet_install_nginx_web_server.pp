@@ -4,7 +4,7 @@ package { 'nginx':
     ensure => 'installed',
     before => File['error']
 }
-$err = 'Ceci n\'est pas une page'
+$err = "Ceci n'est pas une page"
 $conf = "server {\n
    listen   80 default_server;\n
    listen   [::]:80 default_server;\n
@@ -20,6 +20,7 @@ $conf = "server {\n
    }\n     
 }\n
 "
+$hello = "Hello World!\n"
 file {'error':
   ensure  => 'present',
   path    => '/var/www/errors/custom_404.html',
@@ -29,7 +30,7 @@ file {'error':
 file { 'index':
   ensure  => 'present',
   path    => '/var/www/html/index.html',
-  content => 'Hello World!',
+  content => $hello,
   before  => File['nginx_conf']
 }
 file { 'nginx_conf':
