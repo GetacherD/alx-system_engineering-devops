@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+#script to installl and configure nginx
+apt-get update
+apt-get install -y nginx
+mkdir -p /var/www/html
+touch /var/www/html/index.html
+echo "Hello World!" > /var/www/html/index.html
+echo "" > /etc/nginx/sites-available/default
+cat <<END>> /etc/nginx/sites-available/default
+server {
+	listen   80 default_server;
+	listen   [::]:80 default_server;
+	root     /var/www/html;
+	index    index.html index.htm;
+}
+server {
+	listen   80;
+	server_name gtexk.tech/redirect_me www.gtexk.com/redirect_me;
+	return 301 https://www.youtube.com/;
+}
+END
+service nginx restart
