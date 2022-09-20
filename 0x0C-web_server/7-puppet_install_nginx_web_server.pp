@@ -39,6 +39,7 @@ file { 'nginx_conf':
   before  => Exec['restart']
 }
 exec { 'restart':
+  path    => ['/usr/bin/', '/usr/sbin/'],
   command => '/usr/bin/service nginx restart',
-  after = File['nginx_conf']
+  after   => File['nginx_conf']
 }
