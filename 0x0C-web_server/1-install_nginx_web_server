@@ -2,3 +2,4 @@
 #script to installl and configure nginx
 apt-get install nginx
 echo "Hello World" >/var/www/html/index.html
+service nginx restart
