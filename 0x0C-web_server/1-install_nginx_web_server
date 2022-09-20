@@ -4,10 +4,12 @@ apt-get update
 apt-get install -y nginx
 mkdir /var/www/nginx/html
 echo "Hello World" >/var/www/nginx/html/index.html
-echo "server {
+cat <<EOT >> /etc/nginx/site-available/default
+"server {
 	listen 80 default_server;
 	listen [::]:80 default_server;
 	root /var/www/html;
 	index index.html;
-	}">/etc/nginx/site-available/default
+}
+EOT
 service nginx restart
