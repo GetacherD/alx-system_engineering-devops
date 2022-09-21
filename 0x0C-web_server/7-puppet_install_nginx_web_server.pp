@@ -42,5 +42,6 @@ file { 'nginx_conf':
 exec { 'restart':
   path    => ['/usr/bin/', '/usr/sbin/'],
   command => 'service nginx restart',
+  after   => File['nginx_conf']
 }
 
