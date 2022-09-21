@@ -5,22 +5,22 @@ package { 'nginx':
     before => File['error']
 }
 $err = "Ceci n'est pas une page"
-$conf = "server {\n
-   listen   80 default_server;\n
-   listen   [::]:80 default_server;\n
-   root     /var/www/html;\n
-   index    index.html index.htm;\n
-   location /redirect_me {\n
-       return 301 https://www.youtube.com;\n
-   }\n
-   error_page 404 /custom_404.html;\n
-   location = /custom_404.html {\n
-        root /var/www/errors/;\n
-        internal;\n
-   }\n     
-}\n
+$conf = "server {
+   listen   80 default_server;
+   listen   [::]:80 default_server;
+   root     /var/www/html;
+   index    index.html index.htm;
+   location /redirect_me {
+       return 301 https://www.youtube.com;
+   }
+   error_page 404 /custom_404.html;
+   location = /custom_404.html {
+        root /var/www/errors/;
+        internal;
+   }
+}
 "
-$hello = "Hello World!\n"
+$hello = "Hello World!"
 file {'error':
   ensure  => 'present',
   path    => '/var/www/errors/custom_404.html',
@@ -43,3 +43,4 @@ exec { 'restart':
   path    => ['/usr/bin/', '/usr/sbin/'],
   command => 'service nginx restart',
 }
+
