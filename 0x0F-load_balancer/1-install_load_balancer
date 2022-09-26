@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+# Configure HAproxy
+apt install haproxy
+truncate -s 0 /etc/haproxy/haproxy.cfg
+cat <<END>> /etc/haproxy/haproxy.cfg
+global
+        #pass
+defaults
+        mode    http
+        option httpclose
+        timeout connect 5000ms
+        timeout client  5000ms
+        timeout server  5000ms
+frontend app
+        bind *:80
+        default_backend web-backend
+backend web-backend
+        balance roundrobin
+        server 14407-web-01 3.236.223.114:80 check
+        server 14407-web-02 3.236.145.87:80 check
+END
+
