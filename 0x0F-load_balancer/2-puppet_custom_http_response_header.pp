@@ -17,8 +17,8 @@ $conf = "server {
 		internal;
 	}
 	location / {
-		add_header X-Served-By "14407-web-02";
-}
+		add_header 'X-Served-By' '14407-web-02';
+	}
 		
 }
 "
