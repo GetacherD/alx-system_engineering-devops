@@ -19,4 +19,4 @@ backend web-backend
         server 14407-web-01 3.236.223.114:80 check
         server 14407-web-02 3.236.145.87:80 check
 END
-
+systemctl haproxy.service restart
