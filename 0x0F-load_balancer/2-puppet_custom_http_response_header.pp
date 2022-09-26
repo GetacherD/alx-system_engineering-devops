@@ -3,7 +3,7 @@
 package { 'nginx':
   ensure => 'installed',
 }
-$host = $trusted['hostname'];
+$host = $hostname;
 $conf = "server {
 	listen   80 default_server;
 	listen   [::]:80 default_server;
