@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+#script to installl and configure nginx
+apt-get update
+apt-get install -y nginx
+mkdir -p /var/www/errors
+echo "Ceci n'est pas une page"> /var/www/errors/custom_404.html
+mkdir -p /var/www/html
+touch /var/www/html/index.html
+echo "Hello World!" > /var/www/html/index.html
+echo "" > /etc/nginx/sites-available/default
+cat <<END>> /etc/nginx/sites-available/default
+server {
+	listen   80 default_server;
+	listen   [::]:80 default_server;
+	root     /var/www/html;
+	index    index.html index.htm;
+	location /redirect_me {
+		return 301 https://www.youtube.com;
+	}
+	error_page 404 /custom_404.html;
+	location = /custom_404.html {
+		root /var/www/errors/;
+		internal;
+	}
+	location / {
+		add_header X-Served-By "14407-web-02";
+	}
+		
+}
+END
+service nginx restart
