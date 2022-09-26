@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Configure HAproxy
-apt install haproxy
+apt install -y haproxy
 truncate -s 0 /etc/haproxy/haproxy.cfg
 cat <<END>> /etc/haproxy/haproxy.cfg
 global
@@ -19,4 +19,4 @@ backend web-backend
         server 14407-web-01 3.236.223.114:80 check
         server 14407-web-02 3.236.145.87:80 check
 END
-systemctl haproxy.service restart
+service haproxy restart
