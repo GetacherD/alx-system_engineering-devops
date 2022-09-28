@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+#automate new nginx installation
+service nginx status
+service nginx start
