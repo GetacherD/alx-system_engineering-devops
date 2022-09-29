@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
 #automate new nginx installation
 ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
-service nginx restart
+service nginx start
+kill "$(pgrep 'nginx' |head -1)"
