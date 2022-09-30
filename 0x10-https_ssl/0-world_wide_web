@@ -5,12 +5,12 @@ then
 dig "$2.$1"|grep -A1 "ANSWER SECTION"|awk 'END{print}'|
         awk  -v A="$2" -F " " '{print "The subdomain " A " is a " $4 " record and points to "$5}'
 else
-        dig "www.gtexk.tech"|grep -A1 "ANSWER SECTION"|awk 'END{print}'|
+        dig "www.$1"|grep -A1 "ANSWER SECTION"|awk 'END{print}'|
         awk  -v A="www" -F " " '{print "The subdomain " A " is a " $4 " record and points to "$5}'
-        dig "lb-01.gtexk.tech"|grep -A1 "ANSWER SECTION"|awk 'END{print}'|
+        dig "lb-01.$1"|grep -A1 "ANSWER SECTION"|awk 'END{print}'|
         awk  -v A="lb-01" -F " " '{print "The subdomain " A " is a " $4 " record and points to "$5}'
-        dig "web-01.gtexk.tech"|grep -A1 "ANSWER SECTION"|awk 'END{print}'|
+        dig "web-01.$1"|grep -A1 "ANSWER SECTION"|awk 'END{print}'|
         awk  -v A="web-01" -F " " '{print "The subdomain " A " is a " $4 " record and points to "$5}'
-        dig "web-02.gtexk.tech"|grep -A1 "ANSWER SECTION"|awk 'END{print}'|
+        dig "web-02.$1"|grep -A1 "ANSWER SECTION"|awk 'END{print}'|
         awk  -v A="web-02" -F " " '{print "The subdomain " A " is a " $4 " record and points to "$5}'
 fi
