@@ -1,0 +1,20 @@
+global
+        #pass
+        tune.ssl.default-dh-param 2048
+defaults
+        mode    http
+        option httpclose
+        timeout connect 5000ms
+        timeout client  5000ms
+        timeout server  5000ms
+frontend app
+        bind *:80
+        bind *:443 ssl crt /etc/haproxy/certs/gtexk.tech.pem
+        redirect scheme https if !{ ssl_fc }
+        http-request set-header X-Forwarded-Proto https if { ssl_fc }
+        stats uri /haproxy?stats
+        default_backend web-backend
+backend web-backend
+        balance roundrobin
+        server 14407-web-01 3.236.223.114:80 check
+        server 14407-web-02 3.236.145.87:80 check
