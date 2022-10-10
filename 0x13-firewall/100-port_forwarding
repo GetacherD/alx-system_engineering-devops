@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+sudo apt -y update
+sudo apt install -y ufw
+sudo ufw allow 22
+sudo ufw allow 80
+sudo ufw allow 443
+cat <<END>> tmp
+*nat
+:PREROUTING ACCEPT [0:0]
+-A PREROUTING -p tcp --dport 8080 -j REDIRECT --to-port 80
+COMMIT
+END
+sudo cat /etc/ufw/before.rules >after_tmp
+sudo cat tmp after_tmp > /etc/ufw/before.rules
+sudo ufw enable
