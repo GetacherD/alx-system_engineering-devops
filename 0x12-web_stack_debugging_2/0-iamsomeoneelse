@@ -1,3 +1,8 @@
 #!/usr/bin/env bash
 # run command as different user
-runuser - "$1" -c "whoami"
+if id -u "$1" &> /dev/null;
+then
+	runuser - "$1" -c "whoami"
+else
+	whoami
+fi
