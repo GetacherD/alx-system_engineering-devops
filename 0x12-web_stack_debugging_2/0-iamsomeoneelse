@@ -1,6 +1,3 @@
 #!/usr/bin/env bash
 # run command as different user
-if id -u "$1" &> /dev/null;
-then
-	runuser - "$1" -c "whoami"
-fi
+sudo -u "$1" whoami
