@@ -6,7 +6,6 @@ import requests
 import sys
 
 
-
 if __name__ == "__main__":
     try:
         userId = int(sys.argv[1])
