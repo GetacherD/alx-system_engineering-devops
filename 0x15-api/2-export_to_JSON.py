@@ -20,7 +20,7 @@ if __name__ == "__main__":
         "https://jsonplaceholder.typicode.com/todos/?userId={}".format(
             userId)).json()
     with open("{}.json".format(userId), "w", encoding="utf-8") as f:
-        json.dump({userId: [{"task": task.get("title"),
-                             "completed": task.get("completed"),
-                             "usename": username}
-                            for task in tasks]}, f)
+        json.dump({str(userId): [{"task": task.get("title"),
+                                  "completed": task.get("completed"),
+                                  "username": username}
+                                 for task in tasks]}, f)
