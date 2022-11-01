@@ -13,7 +13,6 @@ def count_words(subreddit, word_list=[], hot_list=[], after=""):
     headers = {"User-Agent": "Getacher-Top-Ten"}
     resp = requests.get(url, headers=headers, allow_redirects=False)
     if resp.status_code != 200:
-        print("", end="")
         return
     after = resp.json().get("data").get("after")
     ch = resp.json().get("data").get("children")
@@ -43,8 +42,6 @@ def count_words(subreddit, word_list=[], hot_list=[], after=""):
             i = i + 1
         if (i == 1):
             print("")
-        if not res:
-            print("", end="")
         return
     except Exception:
         print("", end="")
