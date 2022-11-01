@@ -12,9 +12,8 @@ def top_ten(subreddit):
     headers = {"User-Agent": "Getacher-Top-Ten"}
     resp = requests.get(url, headers=headers, allow_redirects=False)
     if resp.status_code == 200:
-        print(resp.json())
         top = resp.json().get("data").get("children")[:10]
         for sub in top:
             print(sub.get("data").get("title"))
     else:
-        print(None)
+        print("None")
