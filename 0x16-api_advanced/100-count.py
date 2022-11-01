@@ -27,8 +27,8 @@ def count_words(subreddit, word_list=[], hot_list=[], after=""):
         res[i] = 0
     for h in hot:
         for key in res:
-            if (key + " ") in h or (" " + key) in h or (" " + key + " ") in h:
-                res[key] = res[key] + 1
+            title = h.lower().split(" ")
+            res[key] = res[key] + title.count(key)
     res = dict(sorted(
         res.items(), key=lambda x: (-x[1], x[0])))
     for key, value in res.items():
