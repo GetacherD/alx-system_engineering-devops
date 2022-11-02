@@ -25,15 +25,10 @@ def count_words(subreddit, word_list=[], after="", res={}):
                 else:
                     res[k] = title.count(k)
         if not after:
-            i = 0
             res = dict(sorted(res.items(), key=lambda x: (-x[1], x[0])))
             for key, value in res.items():
                 if value:
-                    if i == 0:
-                        print("{}: {}".format(key, value), end="")
-                    else:
-                        print("\n{}: {}".format(key, value), end="")
-                i = i + 1
+                    print("{}: {}".format(key, value))
             return
     except Exception:
         return
