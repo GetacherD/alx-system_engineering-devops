@@ -1,3 +1,8 @@
 #!/usr/bin/env bash
 # reload gunicorn gracefully
-pkill gunicorn -HUP
+w1="$(pgrep gunicorn |tail -n 3|head -n 1)"
+w2="$(pgrep gunicorn |tail -n 2 |head -n 1)"
+w3="$(pgrep gunicorn |tail -n 1)"
+kill -HUP "$w1"
+kill -HUP "$w2"
+kill -HUP "$w3"
